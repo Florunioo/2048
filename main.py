@@ -28,8 +28,26 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("2048")
 
 
+def draw_grid(window):
+    
+    # draw horizontal gird lines
+    for row in range(1, ROWS):
+        y = row * TILE_HEIGHT
+        pygame.draw.line(window, OUTLINE_COLOR, (0, y), (WIDTH, y), OUTLINE_THICKNESS)
+
+    # draw vertical gird lines
+    for col in range(1, COLS):
+        x = col * TILE_WIDTH
+        pygame.draw.line(window, OUTLINE_COLOR, (x, 0), (x, HEIGHT), OUTLINE_THICKNESS)
+
+    # draw an outline around the screen
+    pygame.draw.rect(window, OUTLINE_COLOR, (0, 0, WIDTH, HEIGHT), OUTLINE_THICKNESS)
+
+
 def draw(window):
-    window.fill(BG_COLOR)  # Set background color
+    window.fill(BG_COLOR)  # set background color
+    
+    draw_grid(window)
 
     pygame.display.update()
      
